@@ -1,66 +1,77 @@
 ---
 name: html-effectiveness-design
-description: Create clean, modern, self-contained HTML artifacts in the style of Thariq Shihipar's "The unreasonable effectiveness of HTML" examples. Use when making artifact galleries, explainer pages, code review pages, implementation plans, design system references, reports, slide decks, research explainers, diagrams, or custom editors that should feel editorial, structured, readable, restrained, and hand-crafted rather than generic dashboard UI.
+description: Create clean, modern, self-contained HTML artifacts using curated design styles. Supports multiple visual languages — editorial, brutalist, technical, etc. Use when making artifact galleries, explainer pages, code review pages, implementation plans, design system references, reports, slide decks, research explainers, diagrams, or custom editors that should feel intentional and hand-crafted rather than generic dashboard UI.
 ---
 
 # HTML Effectiveness Design
 
-Use this skill to make self-contained HTML pages with the design language observed at `https://thariqs.github.io/html-effectiveness/`.
+Use this skill to make self-contained HTML pages with high design quality. Multiple visual styles are available under `styles/`, each with its own design language and starter template.
 
-The goal is not to copy content. The goal is to reproduce the visual grammar: editorial restraint, warm paper palette, thin borders, serif headlines, mono labels, compact cards, inline SVG thumbnails, and document-shaped layouts that make information easier to read than markdown.
+## Style selection
 
-## First steps
+1. List the directories under `styles/` to discover available styles.
+2. Read the frontmatter of each style's `design-language.md` to see its `name`, `description`, and `best-for` list.
+3. Based on the user's request, recommend the best-matching style and briefly explain why.
+4. Confirm the choice with the user before proceeding.
+5. Once confirmed, read the full `design-language.md` for that style and use its `starter.html` as the starting template.
 
-1. Read `references/design-language.md` before designing.
-2. If starting from scratch, copy `assets/starter.html` and adapt it.
+If the user explicitly names a style, skip the recommendation step and use it directly.
+
+## Building a page
+
+1. Read the chosen style's `design-language.md` before designing anything.
+2. If starting from scratch, copy the style's `starter.html` and adapt it.
 3. Keep the page self-contained: inline CSS, optional inline SVG, minimal inline JS only when interaction materially improves the artifact.
 4. Build for reading first. Avoid generic app-dashboard aesthetics.
 
-## Aesthetic stance
-
-Use a calm editorial system:
-
-- Warm ivory page background.
-- White paper cards.
-- Charcoal text.
-- Clay accent.
-- Oat and olive secondary colors.
-- Thin 1.5px borders.
-- Modest rounded corners.
-- Serif headings, system sans body, monospace metadata.
-- Layouts that feel like a designed document, not a SaaS admin panel.
-
 ## Core page patterns
 
-Choose one primary structure:
+Choose one primary structure based on the content:
 
-- **Gallery index:** masthead, short intro, pill navigation, numbered sections, card grid with SVG thumbnails.
+- **Gallery index:** masthead, short intro, pill navigation, numbered sections, card grid with thumbnails.
 - **Explainer:** masthead, narrow prose column, side glossary, cards, callouts, collapsible details, diagrams.
 - **Plan or report:** document header, status chips, timeline, table-like rows, risk blocks, next-step cards.
 - **Code review:** PR summary, annotated diff rows, file path labels, call graph or module diagram.
 - **Design reference:** token swatches, component contact sheets, variant matrix, usage notes.
 - **Custom editor:** split panes, compact controls, export button, live preview, clear state.
 
-## Non-negotiables
+## Non-negotiables (all styles)
 
 - Prefer semantic HTML: `header`, `nav`, `main`, `section`, `article`, `footer`.
 - Use CSS custom properties for colors, fonts, spacing, border, and radius.
 - Use inline SVG for diagrams and thumbnails when possible.
-- Use hover states sparingly and precisely: border darkens, card lifts 2px to 3px, accent color appears.
-- Use monospace labels for file names, section numbers, metadata, status, and code.
-- Keep body copy compact and readable: 13.5px to 16.5px depending on density.
-- Keep headings serif, medium weight, tight letter spacing.
+- Keep body copy compact and readable.
 - Include mobile breakpoints so grids collapse cleanly.
 - Include print-friendly behavior for durable artifacts.
 
-## Avoid
+## Avoid (all styles)
 
-- Glassmorphism, neon gradients, huge shadows, purple AI palettes, oversized rounded cards.
-- Centered hero everything.
-- Generic metric dashboards unless the source content is truly a report.
 - Heavy JS frameworks for static artifacts.
 - External fonts, CDNs, analytics, remote images, or trackers unless explicitly approved.
 - Over-animated interfaces. Motion should be quiet and purposeful.
+- Generic metric dashboards unless the source content is truly a report.
+
+## Adding a new style
+
+To add a style, create a new directory under `styles/` with two files:
+
+```
+styles/<style-name>/
+  design-language.md    # Full design language with frontmatter (name, description, best-for)
+  starter.html          # Self-contained HTML starter template implementing the style
+```
+
+The `design-language.md` frontmatter must include:
+
+```yaml
+---
+name: Human-readable style name
+description: One-sentence description of the visual feel and key characteristics.
+best-for: comma-separated list of content types this style suits
+---
+```
+
+The `starter.html` should be a working, self-contained HTML page that demonstrates the style's palette, typography, layout, and component patterns. It serves as the copy-and-adapt base for new artifacts.
 
 ## Verification
 

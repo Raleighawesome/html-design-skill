@@ -1,4 +1,10 @@
-# HTML Effectiveness Design Language
+---
+name: Editorial
+description: Calm, editorial aesthetic inspired by independent publishing. Warm ivory palette, serif headings, restrained accents, document-shaped layouts.
+best-for: galleries, explainers, reports, code reviews, design references, plans, slide decks, research explainers
+---
+
+# Editorial Design Language
 
 Source studied: `https://thariqs.github.io/html-effectiveness/` and its 20 linked example pages.
 
