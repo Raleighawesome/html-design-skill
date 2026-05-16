@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presentation title</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rh-font-heading: 'Red Hat Display', Helvetica, Arial, sans-serif;
+    --rh-font-body: 'Red Hat Text', Helvetica, Arial, sans-serif;
+    --rh-font-code: 'Red Hat Mono', 'Courier New', Courier, monospace;
+
+    --rh-red-50: #ee0000;
+    --rh-red-60: #a60000;
+    --rh-red-40: #f56e6e;
+    --rh-red-30: #f9a8a8;
+    --rh-red-20: #fbc5c5;
+    --rh-red-10: #fce3e3;
+    --rh-red-05: #fef0f0;
+    --rh-red-70: #5f0000;
+
+    --rh-white: #ffffff;
+    --rh-black: #000000;
+    --rh-gray-10: #f2f2f2;
+    --rh-gray-20: #e0e0e0;
+    --rh-gray-30: #c7c7c7;
+    --rh-gray-40: #a3a3a3;
+    --rh-gray-50: #707070;
+    --rh-gray-60: #4d4d4d;
+    --rh-gray-70: #383838;
+    --rh-gray-80: #292929;
+    --rh-gray-90: #1f1f1f;
+    --rh-gray-95: #151515;
+
+    --rh-blue-50: #0066cc;
+    --rh-blue-60: #004d99;
+    --rh-purple-50: #5e40be;
+    --rh-teal-50: #37a3a3;
+    --rh-green-50: #63993d;
+    --rh-green-10: #e9f7df;
+    --rh-purple-10: #ece6ff;
+    --rh-orange-40: #f5921b;
+
+    --rh-text-primary: var(--rh-gray-95);
+    --rh-text-secondary: var(--rh-gray-60);
+    --rh-text-brand: var(--rh-red-50);
+    --rh-text-link: var(--rh-blue-50);
+
+    --rh-border-sm: 1px;
+    --rh-border-md: 2px;
+    --rh-border-lg: 3px;
+    --rh-radius: 3px;
+    --rh-radius-pill: 64px;
+
+    --rh-shadow-sm: 0 2px 4px 0 rgba(21, 21, 21, 0.2);
+    --rh-shadow-md: 0 4px 6px 1px rgba(21, 21, 21, 0.25);
+    --rh-shadow-lg: 0 6px 8px 2px rgba(21, 21, 21, 0.3);
+
+    --rh-space-xs: 4px;
+    --rh-space-sm: 6px;
+    --rh-space-md: 8px;
+    --rh-space-lg: 16px;
+    --rh-space-xl: 24px;
+    --rh-space-2xl: 32px;
+    --rh-space-3xl: 48px;
+    --rh-space-4xl: 64px;
+    --rh-space-5xl: 80px;
+
+    --rh-transition: 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--rh-white);
+    color: var(--rh-text-primary);
+    font-family: var(--rh-font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .wrap {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding: 0 var(--rh-space-2xl) var(--rh-space-5xl);
+  }
+
+  /* --- Title slide --- */
+  header.title-slide {
+    padding: var(--rh-space-5xl) 0 var(--rh-space-4xl);
+    border-bottom: var(--rh-border-sm) solid var(--rh-gray-20);
+  }
+  header.title-slide .red-bar {
+    width: 48px;
+    height: 3px;
+    background: var(--rh-red-50);
+    margin-bottom: var(--rh-space-xl);
+  }
+  header.title-slide h1 {
+    font-family: var(--rh-font-heading);
+    font-weight: 400;
+    font-size: clamp(35px, 5vw, 48px);
+    line-height: 1.3;
+    color: var(--rh-text-primary);
+    max-width: 18ch;
+    margin-bottom: var(--rh-space-lg);
+  }
+  header.title-slide .subtitle {
+    font-family: var(--rh-font-body);
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--rh-text-secondary);
+    max-width: 640px;
+  }
+  header.title-slide .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg);
+    margin-top: var(--rh-space-xl);
+    font-family: var(--rh-font-body);
+    font-size: 14px;
+    color: var(--rh-gray-50);
+  }
+  header.title-slide .meta span {
+    display: flex;
+    align-items: center;
+    gap: var(--rh-space-md);
+  }
+
+  /* --- Navigation --- */
+  nav.toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-md);
+    padding: var(--rh-space-xl) 0;
+    border-bottom: var(--rh-border-sm) solid var(--rh-gray-20);
+  }
+  nav.toc a {
+    font-family: var(--rh-font-body);
+    font-size: 14px;
+    font-weight: 500;
+    padding: var(--rh-space-md) var(--rh-space-lg);
+    border: var(--rh-border-sm) solid var(--rh-gray-30);
+    border-radius: var(--rh-radius-pill);
+    text-decoration: none;
+    color: var(--rh-text-primary);
+    background: var(--rh-white);
+    transition: border-color var(--rh-transition), background var(--rh-transition);
+  }
+  nav.toc a:hover {
+    border-color: var(--rh-red-50);
+    background: var(--rh-red-05);
+  }
+
+  /* --- Sections --- */
+  section {
+    padding: var(--rh-space-4xl) 0;
+    scroll-margin-top: var(--rh-space-xl);
+  }
+  section + section {
+    border-top: var(--rh-border-sm) solid var(--rh-gray-20);
+  }
+
+  .section-eyebrow {
+    font-family: var(--rh-font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--rh-red-50);
+    margin-bottom: var(--rh-space-md);
+  }
+
+  section h2 {
+    font-family: var(--rh-font-heading);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--rh-text-primary);
+    margin-bottom: var(--rh-space-lg);
+  }
+  section h3 {
+    font-family: var(--rh-font-heading);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    color: var(--rh-text-primary);
+    margin-bottom: var(--rh-space-lg);
+  }
+  section .section-intro {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--rh-text-secondary);
+    max-width: 720px;
+    margin-bottom: var(--rh-space-2xl);
+  }
+
+  /* --- Card grid --- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--rh-space-xl);
+  }
+  .card {
+    background: var(--rh-white);
+    border: var(--rh-border-sm) solid var(--rh-gray-30);
+    border-radius: var(--rh-radius);
+    padding: var(--rh-space-xl);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow var(--rh-transition);
+  }
+  .card:hover {
+    box-shadow: var(--rh-shadow-sm);
+  }
+  .card .card-label {
+    font-family: var(--rh-font-body);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--rh-gray-50);
+    margin-bottom: var(--rh-space-md);
+  }
+  .card h3 {
+    font-family: var(--rh-font-heading);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: var(--rh-space-md);
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--rh-text-secondary);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .card .card-footer {
+    margin-top: var(--rh-space-lg);
+    padding-top: var(--rh-space-lg);
+    border-top: var(--rh-border-sm) solid var(--rh-gray-20);
+    font-family: var(--rh-font-code);
+    font-size: 12px;
+    color: var(--rh-gray-50);
+  }
+
+  /* --- Highlight card (red accent) --- */
+  .card.highlight {
+    border-left: var(--rh-border-lg) solid var(--rh-red-50);
+  }
+
+  /* --- Metric cards --- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--rh-space-lg);
+  }
+  .metric {
+    background: var(--rh-gray-10);
+    border-radius: var(--rh-radius);
+    padding: var(--rh-space-xl);
+  }
+  .metric .metric-value {
+    font-family: var(--rh-font-heading);
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--rh-text-primary);
+  }
+  .metric .metric-value.brand { color: var(--rh-red-50); }
+  .metric .metric-label {
+    font-family: var(--rh-font-body);
+    font-size: 14px;
+    color: var(--rh-text-secondary);
+    margin-top: var(--rh-space-xs);
+  }
+
+  /* --- Pills / tags --- */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--rh-font-body);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: var(--rh-radius-pill);
+    background: var(--rh-gray-10);
+    color: var(--rh-text-primary);
+    gap: var(--rh-space-xs);
+  }
+  .pill.red { background: var(--rh-red-10); color: var(--rh-red-60); }
+  .pill.green { background: var(--rh-green-10); color: #204d00; }
+  .pill.purple { background: var(--rh-purple-10); color: #21134d; }
+
+  /* --- Table --- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    font-family: var(--rh-font-heading);
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    padding: 12px var(--rh-space-lg);
+    border-bottom: var(--rh-border-md) solid var(--rh-text-primary);
+    color: var(--rh-text-primary);
+  }
+  tbody td {
+    padding: 12px var(--rh-space-lg);
+    border-bottom: var(--rh-border-sm) solid var(--rh-gray-20);
+    color: var(--rh-text-primary);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td code {
+    font-family: var(--rh-font-code);
+    font-size: 13px;
+    background: var(--rh-gray-10);
+    padding: 2px 6px;
+    border-radius: var(--rh-radius);
+  }
+
+  /* --- Blockquote --- */
+  blockquote {
+    font-family: var(--rh-font-heading);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--rh-text-primary);
+    border-left: var(--rh-border-lg) solid var(--rh-red-50);
+    padding-left: var(--rh-space-xl);
+    margin: var(--rh-space-2xl) 0;
+    max-width: 640px;
+  }
+  blockquote cite {
+    display: block;
+    font-family: var(--rh-font-body);
+    font-size: 14px;
+    font-style: normal;
+    color: var(--rh-text-secondary);
+    margin-top: var(--rh-space-md);
+  }
+
+  /* --- Key takeaway (red bg variant) --- */
+  .takeaway {
+    background: var(--rh-red-50);
+    color: var(--rh-white);
+    border-radius: var(--rh-radius);
+    padding: var(--rh-space-3xl) var(--rh-space-2xl);
+    margin: var(--rh-space-4xl) 0;
+  }
+  .takeaway h2 {
+    font-family: var(--rh-font-heading);
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.3;
+    color: var(--rh-white);
+    max-width: 24ch;
+    margin-bottom: var(--rh-space-lg);
+  }
+  .takeaway p {
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 640px;
+    opacity: 0.9;
+  }
+
+  /* --- Status bar --- */
+  .status-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-md);
+    margin-bottom: var(--rh-space-2xl);
+  }
+
+  /* --- Code block --- */
+  pre.code-block {
+    font-family: var(--rh-font-code);
+    font-size: 14px;
+    line-height: 1.5;
+    background: var(--rh-gray-10);
+    border: var(--rh-border-sm) solid var(--rh-gray-30);
+    border-radius: var(--rh-radius);
+    padding: var(--rh-space-lg);
+    overflow-x: auto;
+    margin: var(--rh-space-xl) 0;
+  }
+
+  /* --- Inline SVG helpers --- */
+  .icon-red { fill: var(--rh-red-50); stroke: none; }
+  .icon-dark { fill: var(--rh-text-primary); stroke: none; }
+  .icon-light { fill: var(--rh-white); stroke: none; }
+  .icon-gray { fill: var(--rh-gray-30); stroke: none; }
+  .stroke-dark { fill: none; stroke: var(--rh-text-primary); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .stroke-red { fill: none; stroke: var(--rh-red-50); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .stroke-gray { fill: none; stroke: var(--rh-gray-30); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* --- Footer --- */
+  footer {
+    margin-top: var(--rh-space-5xl);
+    padding: var(--rh-space-xl) 0;
+    border-top: var(--rh-border-sm) solid var(--rh-gray-20);
+    font-size: 13px;
+    color: var(--rh-gray-50);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg);
+  }
+  footer svg { height: 32px; width: auto; }
+
+  /* --- Lists --- */
+  ul, ol {
+    padding-left: var(--rh-space-3xl);
+    margin: var(--rh-space-lg) 0;
+  }
+  li { padding: var(--rh-space-xs) 0; }
+  li + li { margin-top: var(--rh-space-xs); }
+
+  /* --- Links --- */
+  a { color: var(--rh-text-link); text-decoration: underline; }
+  a:hover { color: var(--rh-blue-60); }
+
+  /* --- Responsive --- */
+  @media (max-width: 767px) {
+    .wrap { padding-inline: var(--rh-space-lg); }
+    header.title-slide h1 { font-size: 35px; }
+    section h2 { font-size: 24px; }
+    section h3 { font-size: 18px; }
+    section .section-intro { font-size: 16px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric .metric-value { font-size: 28px; }
+    blockquote { font-size: 18px; }
+    .takeaway { padding: var(--rh-space-2xl) var(--rh-space-xl); }
+    .takeaway h2 { font-size: 26px; }
+  }
+
+  /* --- Print --- */
+  @media print {
+    body { background: white; color: black; }
+    .card, .metric, .takeaway { box-shadow: none; break-inside: avoid; }
+    nav, button, .no-print { display: none; }
+    a { color: inherit; }
+    a[href]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #4d4d4d; }
+    .takeaway { background: var(--rh-gray-10); color: var(--rh-text-primary); }
+    .takeaway h2 { color: var(--rh-text-primary); }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- Title slide -->
+  <header class="title-slide">
+    <div class="red-bar"></div>
+    <h1>Presentation title goes here in sentence case</h1>
+    <p class="subtitle">A brief description of what this presentation covers and why it matters to the audience.</p>
+    <div class="meta">
+      <span>Team name</span>
+      <span>&middot;</span>
+      <span>Q2 2026</span>
+      <span>&middot;</span>
+      <span>Presenter name</span>
+    </div>
+  </header>
+
+  <!-- Section navigation -->
+  <nav class="toc" aria-label="Sections">
+    <a href="#overview">Overview</a>
+    <a href="#details">Details</a>
+    <a href="#metrics">Metrics</a>
+    <a href="#plan">Plan</a>
+  </nav>
+
+  <!-- Section: Overview -->
+  <section id="overview">
+    <div class="section-eyebrow">Section 01</div>
+    <h2>Overview</h2>
+    <p class="section-intro">Introduce the topic and set context. Keep this to 1–2 sentences that orient the audience before the detail cards.</p>
+
+    <div class="card-grid">
+      <article class="card highlight">
+        <div class="card-label">Priority</div>
+        <h3>Key initiative title</h3>
+        <p>Describe the initiative, its purpose, and current status. Keep body text compact and scannable.</p>
+        <div class="card-footer">
+          <span class="pill red">In progress</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-label">Workstream</div>
+        <h3>Supporting effort</h3>
+        <p>Another initiative or workstream that contributes to the overall goal. Link to relevant resources if needed.</p>
+        <div class="card-footer">
+          <span class="pill green">On track</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-label">Workstream</div>
+        <h3>Third workstream</h3>
+        <p>Keep to 3–4 cards per section for readability. Each card should convey one clear idea.</p>
+        <div class="card-footer">
+          <span class="pill">Planned</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Section: Details with table -->
+  <section id="details">
+    <div class="section-eyebrow">Section 02</div>
+    <h2>Details</h2>
+    <p class="section-intro">Use tables for structured data, timelines, or comparisons. Keep rows scannable.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Owner</th>
+          <th>Status</th>
+          <th>Target</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Deliverable one</td>
+          <td>Name</td>
+          <td><span class="pill green">Complete</span></td>
+          <td><code>2026-04-15</code></td>
+        </tr>
+        <tr>
+          <td>Deliverable two</td>
+          <td>Name</td>
+          <td><span class="pill red">In progress</span></td>
+          <td><code>2026-05-30</code></td>
+        </tr>
+        <tr>
+          <td>Deliverable three</td>
+          <td>Name</td>
+          <td><span class="pill">Planned</span></td>
+          <td><code>2026-06-15</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <blockquote>
+      Use blockquotes for key takeaways, notable quotes, or critical context that the audience should remember.
+      <cite>Attribution or source</cite>
+    </blockquote>
+  </section>
+
+  <!-- Section: Metrics -->
+  <section id="metrics">
+    <div class="section-eyebrow">Section 03</div>
+    <h2>Metrics</h2>
+    <p class="section-intro">Highlight key numbers with metric cards. Keep values in Red Hat Mono for clarity.</p>
+
+    <div class="metric-grid">
+      <div class="metric">
+        <div class="metric-value brand">94%</div>
+        <div class="metric-label">Completion rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">2.4k</div>
+        <div class="metric-label">Active users</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">12</div>
+        <div class="metric-label">Sprints delivered</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">3</div>
+        <div class="metric-label">Teams involved</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key takeaway (red background) -->
+  <div class="takeaway">
+    <h2>The single most important point from this presentation</h2>
+    <p>Distill the presentation into one clear statement. This red panel draws attention and should be used once per artifact for maximum impact.</p>
+  </div>
+
+  <!-- Section: Plan / Next steps -->
+  <section id="plan">
+    <div class="section-eyebrow">Section 04</div>
+    <h2>Next steps</h2>
+    <p class="section-intro">Outline what happens next with clear owners and timelines.</p>
+
+    <div class="card-grid">
+      <article class="card">
+        <h3>Action item one</h3>
+        <p>Describe the action, who owns it, and when it needs to happen.</p>
+        <div class="card-footer">Owner &middot; <code>2026-06-01</code></div>
+      </article>
+      <article class="card">
+        <h3>Action item two</h3>
+        <p>Keep action items specific and measurable. Avoid vague commitments.</p>
+        <div class="card-footer">Owner &middot; <code>2026-06-15</code></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Diagram placeholder -->
+  <section>
+    <div class="section-eyebrow">Reference</div>
+    <h2>Architecture or process diagram</h2>
+    <p class="section-intro">Use inline SVG for diagrams. Keep strokes at 2px, use rounded caps, and limit to brand colors.</p>
+
+    <svg viewBox="0 0 720 200" role="img" aria-label="Process flow diagram" style="width:100%;max-width:720px;height:auto;">
+      <rect class="stroke-gray" x="20" y="60" width="140" height="80" rx="3"/>
+      <text x="90" y="105" text-anchor="middle" font-family="Red Hat Display, sans-serif" font-size="14" font-weight="500" fill="#151515">Input</text>
+      <line class="stroke-dark" x1="160" y1="100" x2="230" y2="100"/>
+      <polygon class="icon-dark" points="225,94 237,100 225,106"/>
+
+      <rect x="240" y="60" width="140" height="80" rx="3" fill="var(--rh-red-05)" stroke="var(--rh-red-50)" stroke-width="2"/>
+      <text x="310" y="105" text-anchor="middle" font-family="Red Hat Display, sans-serif" font-size="14" font-weight="500" fill="#151515">Process</text>
+
+      <line class="stroke-dark" x1="380" y1="100" x2="450" y2="100"/>
+      <polygon class="icon-dark" points="445,94 457,100 445,106"/>
+
+      <rect class="stroke-gray" x="460" y="60" width="140" height="80" rx="3"/>
+      <text x="530" y="105" text-anchor="middle" font-family="Red Hat Display, sans-serif" font-size="14" font-weight="500" fill="#151515">Output</text>
+    </svg>
+  </section>
+
+  <footer>
+    <span>Generated as a self-contained HTML artifact</span>
+    <svg viewBox="0 0 613 145" role="img" aria-label="Red Hat logo">
+      <path d="M127.47 83.49c12.51 0 30.61-2.58 30.61-17.46a14 14 0 00-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89 8.69 103.76.5 97.51.5 91.69.5 90 8 83.06 8c-6.68 0-11.64-5.6-17.89-5.6-6 0-9.91 4.09-12.93 12.5 0 0-8.41 23.72-9.49 27.16A6.43 6.43 0 0042.53 44c0 9.22 36.3 39.45 84.94 39.45M160 72.07c1.73 8.19 1.73 9.05 1.73 10.13 0 14-15.74 21.77-36.43 21.77C78.54 104 37.58 76.6 37.58 58.49a18.45 18.45 0 011.51-7.33C22.27 52 .5 55 .5 74.22c0 31.48 74.59 70.28 133.65 70.28 45.28 0 56.7-20.48 56.7-36.65 0-12.72-11-27.16-30.83-35.78" fill="#ee0000"/>
+      <path d="M160 72.07c1.73 8.19 1.73 9.05 1.73 10.13 0 14-15.74 21.77-36.43 21.77C78.54 104 37.58 76.6 37.58 58.49a18.45 18.45 0 011.51-7.33l3.66-9.06A6.43 6.43 0 0042.53 44c0 9.22 36.3 39.45 84.94 39.45 12.51 0 30.61-2.58 30.61-17.46a14 14 0 00-.31-3.42" fill="#151515"/>
+      <path d="M244.58 77.7V57.57h12.29c8.41 0 12.38 3.2 12.38 9.87 0 7.06-4.56 10.26-13.56 10.26zm0 6h10.07l15.28 22.66h12.78l-17.2-23.83c9.58-2 15.28-8.26 15.28-17.14 0-11.24-7.82-17.71-21.38-17.71h-24.83v58.68h10zm66.83 23.44c16.47 0 27.49-10.75 27.49-30 0-18.86-11.42-29.22-26.91-29.22-16.07 0-27.49 10.75-27.49 30 0 18.86 11.42 29.22 26.91 29.22m.39-7.36c-9.78 0-16.47-8.06-16.47-22.25 0-13.4 6.1-22.25 16.08-22.25 9.78 0 16.47 8.06 16.47 22.25 0 13.4-6.1 22.25-16.08 22.25M355 48.56h-7.83v7.64h-.39c-3.38-5.82-8.93-8.42-15.81-8.42-13.56 0-22.17 11.63-22.17 28.83 0 16.22 7.64 28.63 21.38 28.63 6.88 0 12.63-3 16.21-9h.39v2.22c0 14.17-5.94 20.25-15.92 20.25-7.24 0-12.19-2.8-15.77-8.62l-7.64 5.42c5.14 8 13.56 11 23.53 11 17.06 0 24.02-9.58 24.02-28.44V48.56zm-22.37 49.12c-9.19 0-14.54-8.26-14.54-20.83 0-12.77 5-21.42 14.74-21.42 9.58 0 14.93 8.84 14.93 21.23 0 12.57-5.35 21.02-15.13 21.02M395.17 47.78c-6.88 0-12.83 3.58-15.82 10h-.39V28h-10v78.34h10V72.88c0-11.63 5.55-17.65 14.34-17.65 8.41 0 12 5.23 12 14.71v36.42h10V67.09c0-13.18-6.3-19.31-20.13-19.31M445.74 47.78c-16.07 0-25.85 12.42-25.85 29.81 0 18.07 10.17 29.61 26.31 29.61a27.12 27.12 0 0022.17-10.56l-6.49-5.63c-4 4.56-8.61 8.43-15.68 8.43-9.58 0-15.33-7.27-15.72-19.12h39.26c.19-1.58.39-4 .39-5.82 0-17.26-8.61-26.72-24.39-26.72m-15.26 24.14c1.17-10.76 6.69-16.78 14.87-16.78 9 0 13.76 6.21 14.15 16.78zM490.89 48.56h-7.83v-14l-10 3.19v10.81h-7.24v7.64h7.24v32.64c0 11.44 4.94 17.46 16.08 17.46a23.87 23.87 0 007.44-1.19v-7.83a14.63 14.63 0 01-5.36 1c-5.15 0-8.22-2.79-8.22-10.56V56.2h13.89v-7.64" fill="#151515"/>
+    </svg>
+  </footer>
+
+</main>
+</body>
+</html>
