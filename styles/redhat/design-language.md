@@ -50,20 +50,20 @@ Base size: 16px. Headings use line-height 1.3. Body and code use line-height 1.5
 
 | Token | Desktop | Mobile (<768px) | Weight |
 |-------|---------|-----------------|--------|
-| heading-2xl | 48px / 3rem | 35px | 400 (Regular) |
-| heading-xl | 40px / 2.5rem | 29px | 400 (Regular) |
-| heading-lg | 36px / 2.25rem | 26px | 500 (Medium) |
-| heading-md | 28px / 1.75rem | 24px | 500 (Medium) |
-| heading-sm | 24px / 1.5rem | 20px | 500 (Medium) |
-| heading-xs | 20px / 1.25rem | 18px | 500 (Medium) |
+| heading-2xl | 48px / 3rem | 35px | 800 (ExtraBold) |
+| heading-xl | 40px / 2.5rem | 29px | 800 (ExtraBold) |
+| heading-lg | 36px / 2.25rem | 26px | 800 (ExtraBold) |
+| heading-md | 28px / 1.75rem | 24px | 800 (ExtraBold) |
+| heading-sm | 24px / 1.5rem | 20px | 800 (ExtraBold) |
+| heading-xs | 20px / 1.25rem | 18px | 800 (ExtraBold) |
 
 For expressive/hero headings:
 
 | Token | Desktop | Mobile | Weight | Line-height |
 |-------|---------|--------|--------|-------------|
-| heading-5xl | 96px / 6rem | 48px | 300–500 | 1.1 |
-| heading-4xl | 80px / 5rem | 48px | 300–500 | 1.1 |
-| heading-3xl | 64px / 4rem | 48px | 300–500 | 1.1 |
+| heading-5xl | 96px / 6rem | 48px | 800 | 1.1 |
+| heading-4xl | 80px / 5rem | 48px | 800 | 1.1 |
+| heading-3xl | 64px / 4rem | 48px | 800 | 1.1 |
 
 ### Body (Red Hat Text)
 
@@ -277,13 +277,13 @@ For presentation artifacts, the grid is simpler — use a centered container wit
 
 ### Section headers
 
-Use Red Hat Display, medium weight. No serif. Pair with a thin red accent line or red section number.
+Use Red Hat Display, extra-bold weight. No serif. Pair with a thin red accent line or red section number.
 
 ```css
 .section-header {
   font-family: var(--rh-font-heading);
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 800;
   line-height: 1.3;
   color: var(--rh-text-primary);
   margin: 0 0 var(--rh-space-lg);
@@ -324,7 +324,7 @@ Paper rectangles with 3px radius, 1px border. Clean internal hierarchy.
 
 Card internal structure:
 - Eyebrow or category label (optional)
-- Heading (Red Hat Display, medium)
+- Heading (Red Hat Display, extra-bold)
 - Body text (Red Hat Text)
 - Footer with CTA or metadata
 
