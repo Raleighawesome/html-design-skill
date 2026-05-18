@@ -19,6 +19,7 @@ All output is self-contained HTML — inline CSS, optional inline SVG, no extern
 | Style | Description |
 |-------|-------------|
 | [Editorial](styles/editorial/) | Calm, editorial aesthetic inspired by independent publishing. Warm ivory palette, serif headings, restrained accents, document-shaped layouts. |
+| [Red Hat](styles/redhat/) | Faithful reproduction of the Red Hat brand design system. Clean, open, and confident with Red Hat Display headings, a red-black-white core palette, 3px border radius, and generous whitespace. |
 
 ## Adding a new style
 
