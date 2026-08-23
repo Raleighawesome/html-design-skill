@@ -1,0 +1,13 @@
+<!-- Add this CSS to the main style block. Use only for sourced measurements. -->
+<style>
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--rh-space-lg); }
+  .metric { padding: var(--rh-space-xl); border-radius: var(--rh-radius); background: var(--rh-gray-10); }
+  .metric-value { color: var(--rh-gray-95); font-family: var(--rh-font-code); font-size: 36px; line-height: 1.2; }
+  .metric-value.brand { color: var(--rh-red-60); }
+  .metric-label { margin-top: var(--rh-space-xs); color: var(--rh-gray-60); font-size: 14px; }
+</style>
+
+<div class="metric-grid" aria-label="Measured outcomes">
+  <div class="metric"><div class="metric-value brand">94%</div><div class="metric-label">Measured completion rate</div></div>
+  <div class="metric"><div class="metric-value">12</div><div class="metric-label">Verified deliveries</div></div>
+</div>

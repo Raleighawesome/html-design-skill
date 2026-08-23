@@ -1,0 +1,5 @@
+.DS_Store
+.playwright-mcp/
+graphify-out/
+__pycache__/
+*.pyc

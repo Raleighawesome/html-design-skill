@@ -1,0 +1,32 @@
+[
+  {
+    "request": "Turn this architecture review into a calm, readable artifact with annotated findings.",
+    "expected_style": "editorial",
+    "snippets": ["diff-view.html"]
+  },
+  {
+    "request": "Create a project status report with decisions, risks, owners, and a timeline.",
+    "expected_style": "editorial",
+    "snippets": ["report.html", "timeline.html"]
+  },
+  {
+    "request": "Build a compact editor with controls and a live preview for copying JSON.",
+    "expected_style": "editorial",
+    "snippets": ["editor.html"]
+  },
+  {
+    "request": "Create an enterprise strategy presentation with workstreams and next steps.",
+    "expected_style": "redhat",
+    "snippets": ["report-table.html", "takeaway.html"]
+  },
+  {
+    "request": "Explain a technical process using an on-brand flow diagram.",
+    "expected_style": "redhat",
+    "snippets": ["process-diagram.html"]
+  },
+  {
+    "request": "Summarize measured outcomes with a restrained set of metric cards.",
+    "expected_style": "redhat",
+    "snippets": ["metrics.html"]
+  }
+]

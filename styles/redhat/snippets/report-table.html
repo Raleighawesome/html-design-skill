@@ -1,0 +1,12 @@
+<!-- Add this CSS to the main style block. -->
+<style>
+  .table-scroll { overflow-x: auto; border: 1px solid var(--rh-gray-30); border-radius: var(--rh-radius); }
+  .report-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14px; }
+  .report-table th { padding: 12px var(--rh-space-lg); border-bottom: 2px solid var(--rh-gray-95); font-family: var(--rh-font-heading); text-align: left; }
+  .report-table td { padding: 12px var(--rh-space-lg); border-bottom: 1px solid var(--rh-gray-20); vertical-align: top; }
+  .report-table tr:last-child td { border-bottom: 0; }
+</style>
+
+<div class="table-scroll" role="region" aria-label="Project status" tabindex="0">
+  <table class="report-table"><thead><tr><th>Item</th><th>Owner</th><th>Status</th><th>Target</th></tr></thead><tbody><tr><td>Concrete deliverable</td><td>Owner</td><td>On track</td><td><time datetime="2026-06-15">15 Jun</time></td></tr></tbody></table>
+</div>

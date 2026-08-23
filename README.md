@@ -1,61 +1,62 @@
-# HTML Design Skill
+# HTML Artifact Design
 
-A Claude Code skill for generating self-contained HTML pages with high design quality. Instead of producing generic dashboard UI, this skill uses curated visual styles to create pages that feel intentional and hand-crafted.
+A reusable agent skill for producing polished, self-contained HTML artifacts without defaulting to generic dashboard UI. It combines a small routing entrypoint with independently maintained visual styles, minimal starter templates, and selectively loaded component snippets.
 
 ## How it works
 
-The skill supports multiple design styles, each stored as a self-contained folder under `styles/`. When invoked, the skill:
+1. An explicitly requested style routes directly to its folder.
+2. Otherwise the agent reads the generated `styles/index.yaml` registry and selects a style.
+3. Only the selected design language, starter, and relevant snippets enter context.
+4. The resulting artifact is validated for structure, links, dependencies, responsive behavior, reduced motion, and print support.
 
-1. Discovers available styles by scanning the `styles/` directory
-2. Reads each style's frontmatter to understand what it's best suited for
-3. Recommends a style based on the user's request
-4. Confirms the choice with the user
-5. Reads the full design language and uses the starter template to build the page
-
-All output is self-contained HTML — inline CSS, optional inline SVG, no external dependencies.
+HTML is offline-first: inline CSS and optional inline SVG or JavaScript, with no network requests by default. Styles may declare optional external assets, but using them requires explicit approval.
 
 ## Available styles
 
-| Style | Description |
-|-------|-------------|
-| [Editorial](styles/editorial/) | Calm, editorial aesthetic inspired by independent publishing. Warm ivory palette, serif headings, restrained accents, document-shaped layouts. |
-| [Red Hat](styles/redhat/) | Faithful reproduction of the Red Hat brand design system. Clean, open, and confident with Red Hat Display headings, a red-black-white core palette, 3px border radius, and generous whitespace. |
+<!-- BEGIN GENERATED STYLE INDEX -->
+| Style | Best for | Description |
+|---|---|---|
+| [Editorial](styles/editorial/) | galleries, explainers, reports, code reviews, design references, plans, research explainers | Calm, document-shaped layouts with warm ivory surfaces, serif hierarchy, restrained accents, and content-specific diagrams. |
+| [Red Hat](styles/redhat/) | presentations, team updates, project reports, strategy decks, technical overviews, architecture explainers | An open, confident enterprise presentation system with Red Hat typography, restrained red accents, compact radii, and generous whitespace. |
+<!-- END GENERATED STYLE INDEX -->
 
-## Adding a new style
+## Repository structure
 
-Create a new directory under `styles/` with two files:
-
-```
-styles/<style-name>/
-  design-language.md
-  starter.html
-```
-
-### design-language.md
-
-The design language file defines the visual system. It must start with frontmatter:
-
-```yaml
----
-name: Human-readable style name
-description: One-sentence description of the visual feel.
-best-for: comma-separated list of content types this style suits
----
+```text
+SKILL.md                         Runtime routing and shared contract
+styles/index.yaml               Generated compact style registry
+styles/<id>/design-language.md  Style metadata and distinctive rules
+styles/<id>/starter.html        Minimal offline-first starter
+styles/<id>/snippets/           Optional components loaded on demand
+references/                     Conditional guidance
+scripts/                        Scaffolding, registry generation, validation
+tests/                          Deterministic contract and routing fixtures
 ```
 
-The body should cover palette, typography, layout rhythm, component patterns, interaction style, and a design checklist. See [`styles/editorial/design-language.md`](styles/editorial/design-language.md) for a complete example.
+## Add a style
 
-### starter.html
+```bash
+python3 scripts/new_style.py <style-id> --name "Style Name" \
+  --description "Short routing description" --best-for "reports,explainers"
+python3 scripts/build_index.py
+python3 scripts/validate.py
+```
 
-A working, self-contained HTML page that demonstrates the style. This is the copy-and-adapt base for new artifacts. It should include:
+The style folder is the source of truth. `styles/index.yaml` and this README table are generated from its frontmatter. See [`references/style-authoring.md`](references/style-authoring.md) for the contract.
 
-- CSS custom properties for all design tokens
-- Representative layout structure (masthead, sections, cards, footer)
-- Responsive breakpoints
-- Print styles
+## Validate
 
-See [`styles/editorial/starter.html`](styles/editorial/starter.html) for a complete example.
+```bash
+python3 scripts/build_index.py --check
+python3 scripts/validate.py
+python3 -m unittest discover -s tests
+```
 
-## Installation
+Regenerate the reviewed starter baselines with `python3 scripts/render_references.py`.
 
-Add this repo as a Claude Code skill, or clone it into a location where your Claude Code configuration can reference it.
+## Reference renders
+
+| Style | Desktop | Narrow/mobile |
+|---|---|---|
+| Editorial | [1440×1000](references/screenshots/editorial-desktop.png) | [500×900](references/screenshots/editorial-mobile.png) |
+| Red Hat | [1440×1000](references/screenshots/redhat-desktop.png) | [500×900](references/screenshots/redhat-mobile.png) |

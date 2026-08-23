@@ -1,0 +1,15 @@
+<!-- Add this CSS to the main style block. -->
+<style>
+  .diff { overflow: hidden; border: 1.5px solid var(--gray-200); border-radius: var(--radius); background: var(--paper); }
+  .diff-path { padding: 10px 14px; border-bottom: 1px solid var(--gray-100); color: var(--gray-500); font-family: var(--mono); font-size: 11px; }
+  .diff-row { display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 8px 14px; font-family: var(--mono); font-size: 12px; }
+  .diff-row.add { background: #edf4e7; }
+  .diff-row.remove { background: #faece8; }
+  .diff-row .line { color: var(--gray-500); text-align: right; }
+</style>
+
+<article class="diff" aria-label="Annotated change">
+  <div class="diff-path">src/example.js</div>
+  <div class="diff-row remove"><span class="line">12</span><code>- previous behavior</code></div>
+  <div class="diff-row add"><span class="line">12</span><code>+ verified behavior</code></div>
+</article>

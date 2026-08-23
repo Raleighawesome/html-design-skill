@@ -1,0 +1,11 @@
+<!-- Add this CSS to the main style block. -->
+<style>
+  .report-row { display: grid; grid-template-columns: 130px 1fr auto; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--gray-100); align-items: start; }
+  .report-row time, .report-owner { color: var(--gray-500); font-family: var(--mono); font-size: 11px; }
+  .report-row strong { display: block; margin-bottom: 4px; font-family: var(--serif); font-size: 18px; font-weight: 500; }
+  @media (max-width: 640px) { .report-row { grid-template-columns: 1fr; gap: 6px; } }
+</style>
+
+<div class="report-list" aria-label="Plan">
+  <article class="report-row"><time datetime="2026-06-01">01 Jun</time><div><strong>Concrete action</strong><span>Explain the intended outcome and current evidence.</span></div><span class="report-owner">OWNER</span></article>
+</div>

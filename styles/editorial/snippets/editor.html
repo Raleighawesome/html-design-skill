@@ -1,0 +1,14 @@
+<!-- Add this CSS to the main style block and wire controls with minimal local JavaScript. -->
+<style>
+  .editor { display: grid; grid-template-columns: minmax(240px, .7fr) 1fr; min-height: 420px; overflow: hidden; border: 1.5px solid var(--gray-200); border-radius: var(--radius); background: var(--paper); }
+  .editor-controls { display: grid; align-content: start; gap: 14px; padding: 22px; border-right: 1px solid var(--gray-100); }
+  .editor label { color: var(--gray-700); font-size: 13px; font-weight: 600; }
+  .editor input, .editor textarea { width: 100%; padding: 10px 12px; border: 1.5px solid var(--gray-200); border-radius: 6px; font: inherit; }
+  .editor-preview { padding: 28px; background: var(--ivory); }
+  @media (max-width: 720px) { .editor { grid-template-columns: 1fr; } .editor-controls { border-right: 0; border-bottom: 1px solid var(--gray-100); } }
+</style>
+
+<section class="editor" aria-label="Artifact editor">
+  <form class="editor-controls"><label for="editor-title">Title</label><input id="editor-title" name="title"><label for="editor-copy">Copy</label><textarea id="editor-copy" name="copy" rows="6"></textarea><button type="button">Export</button></form>
+  <div class="editor-preview" aria-live="polite"><h2>Live preview</h2></div>
+</section>
